@@ -179,6 +179,11 @@ message GetCompletionsRequest {
   // Processing tier for this request. Set to SERVICE_TIER_PRIORITY for
   // higher scheduling priority at a higher price.
   ServiceTier service_tier = 31;
+
+  // Opaque, stable identifier the application assigns to the end user behind
+  // this request, so policy violations are attributed to that user rather than
+  // the whole API key. Send a hash of an internal user ID, never PII.
+  optional string safety_identifier = 34;
 }
 
 message GetChatCompletionResponse {

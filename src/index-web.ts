@@ -90,6 +90,7 @@ export {
   DEFAULT_VIDEO_POLL_INTERVAL,
   DEFAULT_VIDEO_TIMEOUT,
   type VideoGenerateOptions,
+  type VideoKeyframe,
   type VideoAspectRatioName,
   type VideoResolutionName,
   type VideoGenerationModel,

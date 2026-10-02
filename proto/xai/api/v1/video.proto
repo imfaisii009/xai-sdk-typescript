@@ -140,6 +140,23 @@ message GenerateVideoRequest {
 
   // Whether the generated video includes audio. Defaults to true when omitted.
   optional bool generate_audio = 17;
+
+  // Optional image pinned as the exact last frame of the video.
+  // Only supported by grok-imagine-video-1.5.
+  ImageUrlContent last_frame = 18;
+
+  // Optional images pinned at chosen moments inside the clip.
+  // Only supported by grok-imagine-video-1.5.
+  repeated VideoKeyframe keyframes = 20;
+}
+
+// An image pinned at a moment inside a generated video.
+message VideoKeyframe {
+  // The image the video passes through.
+  ImageUrlContent image = 1;
+
+  // Seconds into the clip; must fall strictly inside it.
+  float timestamp_s = 2;
 }
 
 // Request for retrieving deferred video generation results.

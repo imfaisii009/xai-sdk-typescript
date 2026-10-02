@@ -16,7 +16,7 @@ import type { Message } from "@bufbuild/protobuf";
  * Describes the file xai/api/v1/video.proto.
  */
 export const file_xai_api_v1_video: GenFile = /*@__PURE__*/
-  fileDesc("ChZ4YWkvYXBpL3YxL3ZpZGVvLnByb3RvEgd4YWlfYXBpIj0KD1ZpZGVvVXJsQ29udGVudBINCgN1cmwYASABKAlIABIRCgdmaWxlX2lkGAIgASgJSABCCAoGc291cmNlIjUKD0F1ZGlvVXJsQ29udGVudBISCgh2b2ljZV9pZBgCIAEoCUgAQggKBnNvdXJjZUoECAEQAiKXBAoUR2VuZXJhdGVWaWRlb1JlcXVlc3QSDgoGcHJvbXB0GAEgASgJEicKBWltYWdlGAIgASgLMhgueGFpX2FwaS5JbWFnZVVybENvbnRlbnQSDQoFbW9kZWwYAyABKAkSFQoIZHVyYXRpb24YBCABKAVIAIgBARInCgV2aWRlbxgGIAEoCzIYLnhhaV9hcGkuVmlkZW9VcmxDb250ZW50EjQKDGFzcGVjdF9yYXRpbxgHIAEoDjIZLnhhaV9hcGkuVmlkZW9Bc3BlY3RSYXRpb0gBiAEBEjEKCnJlc29sdXRpb24YCCABKA4yGC54YWlfYXBpLlZpZGVvUmVzb2x1dGlvbkgCiAEBEjIKEHJlZmVyZW5jZV9pbWFnZXMYDSADKAsyGC54YWlfYXBpLkltYWdlVXJsQ29udGVudBI1Cg9zdG9yYWdlX29wdGlvbnMYDiABKAsyFy54YWlfYXBpLlN0b3JhZ2VPcHRpb25zSAOIAQESMgoQcmVmZXJlbmNlX2F1ZGlvcxgQIAMoCzIYLnhhaV9hcGkuQXVkaW9VcmxDb250ZW50EhsKDmdlbmVyYXRlX2F1ZGlvGBEgASgISASIAQFCCwoJX2R1cmF0aW9uQg8KDV9hc3BlY3RfcmF0aW9CDQoLX3Jlc29sdXRpb25CEgoQX3N0b3JhZ2Vfb3B0aW9uc0IRCg9fZ2VuZXJhdGVfYXVkaW8iLQoXR2V0RGVmZXJyZWRWaWRlb1JlcXVlc3QSEgoKcmVxdWVzdF9pZBgBIAEoCSKyAQoNVmlkZW9SZXNwb25zZRImCgV2aWRlbxgBIAEoCzIXLnhhaV9hcGkuR2VuZXJhdGVkVmlkZW8SDQoFbW9kZWwYAiABKAkSJQoFdXNhZ2UYAyABKAsyFi54YWlfYXBpLlNhbXBsaW5nVXNhZ2USJwoFZXJyb3IYBiABKAsyEy54YWlfYXBpLlZpZGVvRXJyb3JIAIgBARIQCghwcm9ncmVzcxgHIAEoBUIICgZfZXJyb3IiuAEKDkdlbmVyYXRlZFZpZGVvEgsKA3VybBgBIAEoCRIQCghkdXJhdGlvbhgEIAEoBRIaChJyZXNwZWN0X21vZGVyYXRpb24YBSABKAgSLQoLZmlsZV9vdXRwdXQYBiABKAsyEy54YWlfYXBpLkZpbGVPdXRwdXRIAIgBARIaCg1zdG9yYWdlX2Vycm9yGAcgASgJSAGIAQFCDgoMX2ZpbGVfb3V0cHV0QhAKDl9zdG9yYWdlX2Vycm9yIn8KGEdldERlZmVycmVkVmlkZW9SZXNwb25zZRInCgZzdGF0dXMYASABKA4yFy54YWlfYXBpLkRlZmVycmVkU3RhdHVzEi0KCHJlc3BvbnNlGAIgASgLMhYueGFpX2FwaS5WaWRlb1Jlc3BvbnNlSACIAQFCCwoJX3Jlc3BvbnNlIisKClZpZGVvRXJyb3ISDAoEY29kZRgBIAEoCRIPCgdtZXNzYWdlGAIgASgJIssBChJFeHRlbmRWaWRlb1JlcXVlc3QSDgoGcHJvbXB0GAEgASgJEicKBXZpZGVvGAIgASgLMhgueGFpX2FwaS5WaWRlb1VybENvbnRlbnQSDQoFbW9kZWwYAyABKAkSFQoIZHVyYXRpb24YBCABKAVIAIgBARI1Cg9zdG9yYWdlX29wdGlvbnMYBiABKAsyFy54YWlfYXBpLlN0b3JhZ2VPcHRpb25zSAGIAQFCCwoJX2R1cmF0aW9uQhIKEF9zdG9yYWdlX29wdGlvbnMq/AEKEFZpZGVvQXNwZWN0UmF0aW8SIgoeVklERU9fQVNQRUNUX1JBVElPX1VOU1BFQ0lGSUVEEAASGgoWVklERU9fQVNQRUNUX1JBVElPXzFfMRABEhsKF1ZJREVPX0FTUEVDVF9SQVRJT18xNl85EAISGwoXVklERU9fQVNQRUNUX1JBVElPXzlfMTYQAxIaChZWSURFT19BU1BFQ1RfUkFUSU9fNF8zEAQSGgoWVklERU9fQVNQRUNUX1JBVElPXzNfNBAFEhoKFlZJREVPX0FTUEVDVF9SQVRJT18zXzIQBhIaChZWSURFT19BU1BFQ1RfUkFUSU9fMl8zEAcqhQEKD1ZpZGVvUmVzb2x1dGlvbhIgChxWSURFT19SRVNPTFVUSU9OX1VOU1BFQ0lGSUVEEAASGQoVVklERU9fUkVTT0xVVElPTl80ODBQEAESGQoVVklERU9fUkVTT0xVVElPTl83MjBQEAISGgoWVklERU9fUkVTT0xVVElPTl8xMDgwUBADMoICCgVWaWRlbxJQCg1HZW5lcmF0ZVZpZGVvEh0ueGFpX2FwaS5HZW5lcmF0ZVZpZGVvUmVxdWVzdBoeLnhhaV9hcGkuU3RhcnREZWZlcnJlZFJlc3BvbnNlIgASTAoLRXh0ZW5kVmlkZW8SGy54YWlfYXBpLkV4dGVuZFZpZGVvUmVxdWVzdBoeLnhhaV9hcGkuU3RhcnREZWZlcnJlZFJlc3BvbnNlIgASWQoQR2V0RGVmZXJyZWRWaWRlbxIgLnhhaV9hcGkuR2V0RGVmZXJyZWRWaWRlb1JlcXVlc3QaIS54YWlfYXBpLkdldERlZmVycmVkVmlkZW9SZXNwb25zZSIAQlEKC2NvbS54YWlfYXBpQgpWaWRlb1Byb3RvUAGiAgNYWFiqAgZYYWlBcGnKAgZYYWlBcGniAhJYYWlBcGlcR1BCTWV0YWRhdGHqAgZYYWlBcGliBnByb3RvMw", [file_xai_api_v1_deferred, file_xai_api_v1_image, file_xai_api_v1_usage]);
+  fileDesc("ChZ4YWkvYXBpL3YxL3ZpZGVvLnByb3RvEgd4YWlfYXBpIj0KD1ZpZGVvVXJsQ29udGVudBINCgN1cmwYASABKAlIABIRCgdmaWxlX2lkGAIgASgJSABCCAoGc291cmNlIjUKD0F1ZGlvVXJsQ29udGVudBISCgh2b2ljZV9pZBgCIAEoCUgAQggKBnNvdXJjZUoECAEQAiLwBAoUR2VuZXJhdGVWaWRlb1JlcXVlc3QSDgoGcHJvbXB0GAEgASgJEicKBWltYWdlGAIgASgLMhgueGFpX2FwaS5JbWFnZVVybENvbnRlbnQSDQoFbW9kZWwYAyABKAkSFQoIZHVyYXRpb24YBCABKAVIAIgBARInCgV2aWRlbxgGIAEoCzIYLnhhaV9hcGkuVmlkZW9VcmxDb250ZW50EjQKDGFzcGVjdF9yYXRpbxgHIAEoDjIZLnhhaV9hcGkuVmlkZW9Bc3BlY3RSYXRpb0gBiAEBEjEKCnJlc29sdXRpb24YCCABKA4yGC54YWlfYXBpLlZpZGVvUmVzb2x1dGlvbkgCiAEBEjIKEHJlZmVyZW5jZV9pbWFnZXMYDSADKAsyGC54YWlfYXBpLkltYWdlVXJsQ29udGVudBI1Cg9zdG9yYWdlX29wdGlvbnMYDiABKAsyFy54YWlfYXBpLlN0b3JhZ2VPcHRpb25zSAOIAQESMgoQcmVmZXJlbmNlX2F1ZGlvcxgQIAMoCzIYLnhhaV9hcGkuQXVkaW9VcmxDb250ZW50EhsKDmdlbmVyYXRlX2F1ZGlvGBEgASgISASIAQESLAoKbGFzdF9mcmFtZRgSIAEoCzIYLnhhaV9hcGkuSW1hZ2VVcmxDb250ZW50EikKCWtleWZyYW1lcxgUIAMoCzIWLnhhaV9hcGkuVmlkZW9LZXlmcmFtZUILCglfZHVyYXRpb25CDwoNX2FzcGVjdF9yYXRpb0INCgtfcmVzb2x1dGlvbkISChBfc3RvcmFnZV9vcHRpb25zQhEKD19nZW5lcmF0ZV9hdWRpbyJNCg1WaWRlb0tleWZyYW1lEicKBWltYWdlGAEgASgLMhgueGFpX2FwaS5JbWFnZVVybENvbnRlbnQSEwoLdGltZXN0YW1wX3MYAiABKAIiLQoXR2V0RGVmZXJyZWRWaWRlb1JlcXVlc3QSEgoKcmVxdWVzdF9pZBgBIAEoCSKyAQoNVmlkZW9SZXNwb25zZRImCgV2aWRlbxgBIAEoCzIXLnhhaV9hcGkuR2VuZXJhdGVkVmlkZW8SDQoFbW9kZWwYAiABKAkSJQoFdXNhZ2UYAyABKAsyFi54YWlfYXBpLlNhbXBsaW5nVXNhZ2USJwoFZXJyb3IYBiABKAsyEy54YWlfYXBpLlZpZGVvRXJyb3JIAIgBARIQCghwcm9ncmVzcxgHIAEoBUIICgZfZXJyb3IiuAEKDkdlbmVyYXRlZFZpZGVvEgsKA3VybBgBIAEoCRIQCghkdXJhdGlvbhgEIAEoBRIaChJyZXNwZWN0X21vZGVyYXRpb24YBSABKAgSLQoLZmlsZV9vdXRwdXQYBiABKAsyEy54YWlfYXBpLkZpbGVPdXRwdXRIAIgBARIaCg1zdG9yYWdlX2Vycm9yGAcgASgJSAGIAQFCDgoMX2ZpbGVfb3V0cHV0QhAKDl9zdG9yYWdlX2Vycm9yIn8KGEdldERlZmVycmVkVmlkZW9SZXNwb25zZRInCgZzdGF0dXMYASABKA4yFy54YWlfYXBpLkRlZmVycmVkU3RhdHVzEi0KCHJlc3BvbnNlGAIgASgLMhYueGFpX2FwaS5WaWRlb1Jlc3BvbnNlSACIAQFCCwoJX3Jlc3BvbnNlIisKClZpZGVvRXJyb3ISDAoEY29kZRgBIAEoCRIPCgdtZXNzYWdlGAIgASgJIssBChJFeHRlbmRWaWRlb1JlcXVlc3QSDgoGcHJvbXB0GAEgASgJEicKBXZpZGVvGAIgASgLMhgueGFpX2FwaS5WaWRlb1VybENvbnRlbnQSDQoFbW9kZWwYAyABKAkSFQoIZHVyYXRpb24YBCABKAVIAIgBARI1Cg9zdG9yYWdlX29wdGlvbnMYBiABKAsyFy54YWlfYXBpLlN0b3JhZ2VPcHRpb25zSAGIAQFCCwoJX2R1cmF0aW9uQhIKEF9zdG9yYWdlX29wdGlvbnMq/AEKEFZpZGVvQXNwZWN0UmF0aW8SIgoeVklERU9fQVNQRUNUX1JBVElPX1VOU1BFQ0lGSUVEEAASGgoWVklERU9fQVNQRUNUX1JBVElPXzFfMRABEhsKF1ZJREVPX0FTUEVDVF9SQVRJT18xNl85EAISGwoXVklERU9fQVNQRUNUX1JBVElPXzlfMTYQAxIaChZWSURFT19BU1BFQ1RfUkFUSU9fNF8zEAQSGgoWVklERU9fQVNQRUNUX1JBVElPXzNfNBAFEhoKFlZJREVPX0FTUEVDVF9SQVRJT18zXzIQBhIaChZWSURFT19BU1BFQ1RfUkFUSU9fMl8zEAcqhQEKD1ZpZGVvUmVzb2x1dGlvbhIgChxWSURFT19SRVNPTFVUSU9OX1VOU1BFQ0lGSUVEEAASGQoVVklERU9fUkVTT0xVVElPTl80ODBQEAESGQoVVklERU9fUkVTT0xVVElPTl83MjBQEAISGgoWVklERU9fUkVTT0xVVElPTl8xMDgwUBADMoICCgVWaWRlbxJQCg1HZW5lcmF0ZVZpZGVvEh0ueGFpX2FwaS5HZW5lcmF0ZVZpZGVvUmVxdWVzdBoeLnhhaV9hcGkuU3RhcnREZWZlcnJlZFJlc3BvbnNlIgASTAoLRXh0ZW5kVmlkZW8SGy54YWlfYXBpLkV4dGVuZFZpZGVvUmVxdWVzdBoeLnhhaV9hcGkuU3RhcnREZWZlcnJlZFJlc3BvbnNlIgASWQoQR2V0RGVmZXJyZWRWaWRlbxIgLnhhaV9hcGkuR2V0RGVmZXJyZWRWaWRlb1JlcXVlc3QaIS54YWlfYXBpLkdldERlZmVycmVkVmlkZW9SZXNwb25zZSIAQlEKC2NvbS54YWlfYXBpQgpWaWRlb1Byb3RvUAGiAgNYWFiqAgZYYWlBcGnKAgZYYWlBcGniAhJYYWlBcGlcR1BCTWV0YWRhdGHqAgZYYWlBcGliBnByb3RvMw", [file_xai_api_v1_deferred, file_xai_api_v1_image, file_xai_api_v1_usage]);
 
 /**
  * Specifies a video by URL for video editing.
@@ -173,6 +173,22 @@ export type GenerateVideoRequest = Message<"xai_api.GenerateVideoRequest"> & {
    * @generated from field: optional bool generate_audio = 17;
    */
   generateAudio?: boolean | undefined;
+
+  /**
+   * Optional image pinned as the exact last frame of the video.
+   * Only supported by grok-imagine-video-1.5.
+   *
+   * @generated from field: xai_api.ImageUrlContent last_frame = 18;
+   */
+  lastFrame?: ImageUrlContent | undefined;
+
+  /**
+   * Optional images pinned at chosen moments inside the clip.
+   * Only supported by grok-imagine-video-1.5.
+   *
+   * @generated from field: repeated xai_api.VideoKeyframe keyframes = 20;
+   */
+  keyframes: VideoKeyframe[];
 };
 
 /**
@@ -181,6 +197,34 @@ export type GenerateVideoRequest = Message<"xai_api.GenerateVideoRequest"> & {
  */
 export const GenerateVideoRequestSchema: GenMessage<GenerateVideoRequest> = /*@__PURE__*/
   messageDesc(file_xai_api_v1_video, 2);
+
+/**
+ * An image pinned at a moment inside a generated video.
+ *
+ * @generated from message xai_api.VideoKeyframe
+ */
+export type VideoKeyframe = Message<"xai_api.VideoKeyframe"> & {
+  /**
+   * The image the video passes through.
+   *
+   * @generated from field: xai_api.ImageUrlContent image = 1;
+   */
+  image?: ImageUrlContent | undefined;
+
+  /**
+   * Seconds into the clip; must fall strictly inside it.
+   *
+   * @generated from field: float timestamp_s = 2;
+   */
+  timestampS: number;
+};
+
+/**
+ * Describes the message xai_api.VideoKeyframe.
+ * Use `create(VideoKeyframeSchema)` to create a new message.
+ */
+export const VideoKeyframeSchema: GenMessage<VideoKeyframe> = /*@__PURE__*/
+  messageDesc(file_xai_api_v1_video, 3);
 
 /**
  * Request for retrieving deferred video generation results.
@@ -201,7 +245,7 @@ export type GetDeferredVideoRequest = Message<"xai_api.GetDeferredVideoRequest">
  * Use `create(GetDeferredVideoRequestSchema)` to create a new message.
  */
 export const GetDeferredVideoRequestSchema: GenMessage<GetDeferredVideoRequest> = /*@__PURE__*/
-  messageDesc(file_xai_api_v1_video, 3);
+  messageDesc(file_xai_api_v1_video, 4);
 
 /**
  * The response from the video generation models containing the generated video.
@@ -256,7 +300,7 @@ export type VideoResponse = Message<"xai_api.VideoResponse"> & {
  * Use `create(VideoResponseSchema)` to create a new message.
  */
 export const VideoResponseSchema: GenMessage<VideoResponse> = /*@__PURE__*/
-  messageDesc(file_xai_api_v1_video, 4);
+  messageDesc(file_xai_api_v1_video, 5);
 
 /**
  * Contains all data related to a generated video.
@@ -307,7 +351,7 @@ export type GeneratedVideo = Message<"xai_api.GeneratedVideo"> & {
  * Use `create(GeneratedVideoSchema)` to create a new message.
  */
 export const GeneratedVideoSchema: GenMessage<GeneratedVideo> = /*@__PURE__*/
-  messageDesc(file_xai_api_v1_video, 5);
+  messageDesc(file_xai_api_v1_video, 6);
 
 /**
  * Response from GetDeferredVideo, including the response if the video
@@ -337,7 +381,7 @@ export type GetDeferredVideoResponse = Message<"xai_api.GetDeferredVideoResponse
  * Use `create(GetDeferredVideoResponseSchema)` to create a new message.
  */
 export const GetDeferredVideoResponseSchema: GenMessage<GetDeferredVideoResponse> = /*@__PURE__*/
-  messageDesc(file_xai_api_v1_video, 6);
+  messageDesc(file_xai_api_v1_video, 7);
 
 /**
  * Structured error returned when video generation fails.
@@ -365,7 +409,7 @@ export type VideoError = Message<"xai_api.VideoError"> & {
  * Use `create(VideoErrorSchema)` to create a new message.
  */
 export const VideoErrorSchema: GenMessage<VideoError> = /*@__PURE__*/
-  messageDesc(file_xai_api_v1_video, 7);
+  messageDesc(file_xai_api_v1_video, 8);
 
 /**
  * Request message for extending an existing video.
@@ -417,7 +461,7 @@ export type ExtendVideoRequest = Message<"xai_api.ExtendVideoRequest"> & {
  * Use `create(ExtendVideoRequestSchema)` to create a new message.
  */
 export const ExtendVideoRequestSchema: GenMessage<ExtendVideoRequest> = /*@__PURE__*/
-  messageDesc(file_xai_api_v1_video, 8);
+  messageDesc(file_xai_api_v1_video, 9);
 
 /**
  * Aspect ratio for video generation.

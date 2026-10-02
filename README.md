@@ -196,6 +196,14 @@ const video = await client.video.generate("A drone shot over misty mountains", "
   duration: 5,
 });
 console.log(video.url);
+
+// Pin first, last and mid-clip frames (grok-imagine-video-1.5 only)
+const pinned = await client.video.generate("The sketch becomes clay, then bronze", "grok-imagine-video-1.5", {
+  imageUrl: "https://example.com/sketch.jpg",
+  lastFrameUrl: "https://example.com/bronze.jpg",
+  keyframes: [{ imageUrl: "https://example.com/clay.jpg", timestamp: 4 }],
+  duration: 8,
+});
 ```
 
 ### Files

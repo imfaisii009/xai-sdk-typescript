@@ -653,7 +653,14 @@ export interface CreateChatOptions {
    */
   conversationId?: string;
   messages?: Message[];
+  /** Prefer `safetyIdentifier`. */
   user?: string;
+  /**
+   * Opaque, stable id for the end user behind this request, so xAI attributes policy
+   * violations to that user instead of your whole API key. Send a hash of your internal
+   * user ID, never an email address or display name.
+   */
+  safetyIdentifier?: string;
   maxTokens?: number;
   seed?: number;
   stop?: string[];
@@ -1031,6 +1038,7 @@ export class ChatClient {
       model: options.model,
       messages: options.messages ? [...options.messages] : [],
       user: options.user ?? "",
+      safetyIdentifier: options.safetyIdentifier,
       maxTokens: options.maxTokens,
       seed: options.seed,
       stop: options.stop ? [...options.stop] : [],

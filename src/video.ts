@@ -10,6 +10,7 @@ import {
   GetDeferredVideoRequestSchema,
   Video,
   VideoAspectRatio,
+  VideoKeyframeSchema,
   VideoResolution,
   VideoUrlContentSchema,
   type ExtendVideoRequest,
@@ -63,9 +64,21 @@ function resolutionToProto(res?: VideoResolutionName): VideoResolution | undefin
   throw new Error(`Invalid video resolution: ${res}`);
 }
 
+/**
+ * An image pinned `timestamp` seconds into the clip (strictly inside it).
+ * Give exactly one of `imageUrl` (URL or base64 data URL) or `imageFileId`.
+ */
+export type VideoKeyframe = { imageUrl: string; timestamp: number } | { imageFileId: string; timestamp: number };
+
 export interface VideoGenerateOptions {
+  /** First frame. Combined with references, `lastFrame*` or `keyframes`, pins the exact first frame (grok-imagine-video-1.5). */
   imageUrl?: string;
   imageFileId?: string;
+  /** Pins the exact last frame. Only supported by grok-imagine-video-1.5. */
+  lastFrameUrl?: string;
+  lastFrameFileId?: string;
+  /** Images pinned inside the clip, at most four. Only supported by grok-imagine-video-1.5. */
+  keyframes?: VideoKeyframe[];
   videoUrl?: string;
   videoFileId?: string;
   duration?: number;
@@ -90,11 +103,34 @@ function videoContent(url?: string, fileId?: string) {
   return undefined;
 }
 
+function keyframeToPb(entry: VideoKeyframe) {
+  const { imageUrl, imageFileId, timestamp, ...extra } = entry as {
+    imageUrl?: unknown;
+    imageFileId?: unknown;
+    timestamp?: unknown;
+  };
+  const sources = [imageUrl, imageFileId].filter((x) => x !== undefined);
+  if (sources.length !== 1 || typeof sources[0] !== "string" || !sources[0]) {
+    throw new Error("Each keyframe needs exactly one non-empty imageUrl or imageFileId.");
+  }
+  if (typeof timestamp !== "number" || !Number.isFinite(timestamp)) {
+    throw new Error("Each keyframe needs a numeric timestamp in seconds.");
+  }
+  if (Object.keys(extra).length) throw new Error(`Unknown keyframe keys: ${Object.keys(extra).join(", ")}`);
+  return create(VideoKeyframeSchema, {
+    image: imageContent(imageUrl as string | undefined, imageFileId as string | undefined),
+    timestampS: timestamp,
+  });
+}
+
 function makeGenerateRequest(
   prompt: string,
   model: VideoGenerationModel | (string & {}),
   options: VideoGenerateOptions = {},
 ): GenerateVideoRequest {
+  if (options.lastFrameUrl !== undefined && options.lastFrameFileId !== undefined) {
+    throw new Error("Only one of lastFrameUrl or lastFrameFileId may be set.");
+  }
   const refs = [
     ...(options.referenceImageFileIds ?? []).map((id) =>
       create(ImageUrlContentSchema, { source: { case: "fileId", value: id } }),
@@ -113,6 +149,8 @@ function makeGenerateRequest(
     aspectRatio: aspectRatioToProto(options.aspectRatio),
     resolution: resolutionToProto(options.resolution),
     image: imageContent(options.imageUrl, options.imageFileId),
+    lastFrame: imageContent(options.lastFrameUrl, options.lastFrameFileId),
+    keyframes: (options.keyframes ?? []).map(keyframeToPb),
     video: videoContent(options.videoUrl, options.videoFileId),
     referenceImages: refs,
     referenceAudios,
