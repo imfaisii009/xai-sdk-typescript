@@ -178,6 +178,18 @@ const res = await chat.sample();
 console.log(res.content);
 ```
 
+### Moderation guidelines & end-user attribution
+
+```ts
+const chat = client.chat.create({
+  model: "grok-4",
+  // Hash of your internal user ID, so policy violations are attributed to that user, not your key.
+  safetyIdentifier: "u_9f2c1e",
+  // nsfw / violence / profanity accept "decline"; cyber accepts "allow" on enabled keys only.
+  guidelines: [{ type: "policy", category: "violence", behavior: "decline" }],
+});
+```
+
 ### Images
 
 ```ts

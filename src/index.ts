@@ -40,6 +40,9 @@ export {
   type ResponseFormatName,
   type ImageDetailName,
   type IncludeOptionName,
+  type GuidelineInput,
+  type GuidelineCategoryName,
+  type GuidelineBehaviorName,
   type ChatModel,
 } from "./chat.js";
 

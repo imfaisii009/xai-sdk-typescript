@@ -12,6 +12,9 @@ import {
   FunctionSchema,
   GetCompletionsRequestSchema,
   GetStoredCompletionRequestSchema,
+  GuidelineBehavior,
+  GuidelineCategory,
+  GuidelineSchema,
   IncludeOption,
   MessageRole,
   MessageSchema,
@@ -28,6 +31,7 @@ import {
   type GetChatCompletionChunk,
   type GetChatCompletionResponse,
   type GetCompletionsRequest,
+  type Guideline,
   type InlineCitation,
   type LogProbs,
   type Message,
@@ -106,6 +110,14 @@ export type IncludeOptionName =
   | "inline_citations"
   | "verbose_streaming"
   | "code_execution_files_output";
+export type GuidelineCategoryName = "nsfw" | "violence" | "profanity" | "cyber";
+export type GuidelineBehaviorName = "decline" | "allow";
+/** One output guideline, the same shape as the REST `guidelines` entries. */
+export interface GuidelineInput {
+  type: "policy";
+  category: GuidelineCategoryName;
+  behavior: GuidelineBehaviorName;
+}
 
 export type ContentInput = string | Content;
 
@@ -278,6 +290,28 @@ function includeOptionToProto(opt: IncludeOptionName | IncludeOption): IncludeOp
   const v = INCLUDE_MAP[opt];
   if (v === undefined) throw new Error(`Invalid include option: ${opt}`);
   return v;
+}
+
+const GUIDELINE_CATEGORY_MAP: Record<GuidelineCategoryName, GuidelineCategory> = {
+  nsfw: GuidelineCategory.NSFW,
+  violence: GuidelineCategory.VIOLENCE,
+  profanity: GuidelineCategory.PROFANITY,
+  cyber: GuidelineCategory.CYBER,
+};
+
+const GUIDELINE_BEHAVIOR_MAP: Record<GuidelineBehaviorName, GuidelineBehavior> = {
+  decline: GuidelineBehavior.DECLINE,
+  allow: GuidelineBehavior.ALLOW,
+};
+
+function guidelineToProto(g: GuidelineInput | Guideline): Guideline {
+  if ("$typeName" in g) return g;
+  if (g.type !== "policy") throw new Error(`Invalid guideline type: ${g.type}`);
+  const category = GUIDELINE_CATEGORY_MAP[g.category];
+  if (category === undefined) throw new Error(`Invalid guideline category: ${g.category}`);
+  const behavior = GUIDELINE_BEHAVIOR_MAP[g.behavior];
+  if (behavior === undefined) throw new Error(`Invalid guideline behavior: ${g.behavior}`);
+  return create(GuidelineSchema, { kind: { case: "policy", value: { category, behavior } } });
 }
 
 function agentCountToProto(n: 4 | 16 | AgentCount): AgentCount {
@@ -684,6 +718,13 @@ export interface CreateChatOptions {
   agentCount?: 4 | 16 | AgentCount;
   batchRequestId?: string;
   serviceTier?: ServiceTierName | ServiceTierEnum;
+  /**
+   * Per-category moderation controls, e.g. `{ type: "policy", category: "violence", behavior: "decline" }`.
+   * `nsfw`, `violence` and `profanity` accept `decline`; `cyber` accepts `allow`, only for API keys
+   * enabled for it. Omitted categories keep the model default. Not usable with multi-agent models,
+   * `stop`, or `defer()`.
+   */
+  guidelines?: Array<GuidelineInput | Guideline>;
 }
 
 /**
@@ -1039,6 +1080,7 @@ export class ChatClient {
       messages: options.messages ? [...options.messages] : [],
       user: options.user ?? "",
       safetyIdentifier: options.safetyIdentifier,
+      guidelines: options.guidelines?.map(guidelineToProto) ?? [],
       maxTokens: options.maxTokens,
       seed: options.seed,
       stop: options.stop ? [...options.stop] : [],

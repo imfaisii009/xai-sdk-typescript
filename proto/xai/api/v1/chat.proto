@@ -184,6 +184,38 @@ message GetCompletionsRequest {
   // this request, so policy violations are attributed to that user rather than
   // the whole API key. Send a hash of an internal user ID, never PII.
   optional string safety_identifier = 34;
+
+  // Per-category moderation controls for the model's output. Each category
+  // may appear at most once; an omitted category keeps the model default.
+  repeated Guideline guidelines = 39;
+}
+
+// One output guideline, mirroring the REST `guidelines` entries.
+message Guideline {
+  oneof kind {
+    PolicyGuideline policy = 1;
+  }
+}
+
+// How the model treats one content category.
+message PolicyGuideline {
+  GuidelineCategory category = 1;
+  GuidelineBehavior behavior = 2;
+}
+
+enum GuidelineCategory {
+  GUIDELINE_CATEGORY_INVALID = 0;
+  GUIDELINE_CATEGORY_NSFW = 1;
+  GUIDELINE_CATEGORY_VIOLENCE = 2;
+  GUIDELINE_CATEGORY_PROFANITY = 5;
+  // Only accepted for API keys enabled for it, with GUIDELINE_BEHAVIOR_ALLOW.
+  GUIDELINE_CATEGORY_CYBER = 6;
+}
+
+enum GuidelineBehavior {
+  GUIDELINE_BEHAVIOR_INVALID = 0;
+  GUIDELINE_BEHAVIOR_DECLINE = 1;
+  GUIDELINE_BEHAVIOR_ALLOW = 3;
 }
 
 message GetChatCompletionResponse {
