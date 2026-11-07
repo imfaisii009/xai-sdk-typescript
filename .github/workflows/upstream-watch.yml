@@ -1,0 +1,51 @@
+# Daily check of xai-org/xai-sdk-python for commits not yet ported here.
+# New commits open (or update) an issue labelled `upstream-sync`; GitHub emails you on new issues.
+# After porting, set .github/upstream-sha to the upstream commit you synced to; the next run closes the issue.
+
+name: Upstream watch
+
+on:
+  schedule:
+    - cron: "0 8 * * *"
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  issues: write
+
+jobs:
+  check:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Compare with last synced upstream commit
+        env:
+          GH_TOKEN: ${{ github.token }}
+          UPSTREAM: xai-org/xai-sdk-python
+        run: |
+          set -euo pipefail
+          SYNCED=$(tr -d '[:space:]' < .github/upstream-sha)
+          HEAD=$(gh api "repos/$UPSTREAM/commits/main" --jq .sha)
+          OPEN=$(gh issue list --label upstream-sync --state open --json number --jq '.[0].number // empty')
+
+          if [ "$HEAD" = "$SYNCED" ]; then
+            echo "Up to date with $UPSTREAM@${HEAD:0:7}"
+            if [ -n "$OPEN" ]; then gh issue close "$OPEN" --comment "Synced to \`${HEAD:0:7}\`."; fi
+            exit 0
+          fi
+
+          COMMITS=$(gh api "repos/$UPSTREAM/compare/$SYNCED...$HEAD" \
+            --jq '.commits[] | "- [`\(.sha[0:7])`](\(.html_url)) \(.commit.message | split("\n")[0])"')
+          COUNT=$(printf '%s\n' "$COMMITS" | grep -c .)
+          TITLE="Upstream: $COUNT new xai-sdk-python commit(s)"
+          BODY=$(printf '%s new commit(s) on [%s](https://github.com/%s) since `%s`:\n\n%s\n\nAfter porting, set `.github/upstream-sha` to `%s`.' \
+            "$COUNT" "$UPSTREAM" "$UPSTREAM" "${SYNCED:0:7}" "$COMMITS" "$HEAD")
+
+          gh label create upstream-sync --color 0E8A16 --description "New commits in xai-sdk-python" --force >/dev/null
+          if [ -n "$OPEN" ]; then
+            gh issue edit "$OPEN" --title "$TITLE" --body "$BODY"
+          else
+            gh issue create --title "$TITLE" --label upstream-sync --body "$BODY"
+          fi
