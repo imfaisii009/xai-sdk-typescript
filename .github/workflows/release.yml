@@ -5,9 +5,9 @@
 #   2. Commit, then: git tag v0.1.2 && git push origin main --tags
 #   3. This workflow publishes to npm and opens the GitHub Release
 #
-# Required repo secret:
-#   NPM_TOKEN — npm access token with publish rights for xai-sdk-js
-#   (GitHub → Settings → Secrets and variables → Actions)
+# Auth: npm Trusted Publishing (OIDC), no token. Configured on npmjs.com under
+#   xai-sdk-js → Settings → Trusted Publisher → GitHub Actions
+#   (imfaisii009 / xai-sdk-typescript / release.yml).
 
 name: Release
 
@@ -46,7 +46,10 @@ jobs:
         uses: actions/setup-node@v4
         with:
           node-version: "22"
-          registry-url: "https://registry.npmjs.org"
+
+      # Trusted Publishing needs npm 11.5.1 or newer; Node 22 ships npm 10.
+      - name: Update npm
+        run: npm install -g npm@^11.5.1
 
       - name: Install
         run: bun install --frozen-lockfile
@@ -101,19 +104,9 @@ jobs:
       - name: Publish to npm
         if: steps.meta.outputs.already_published != 'true'
         env:
-          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
           VERSION: ${{ steps.meta.outputs.version }}
         run: |
           set -euo pipefail
-          if [ -z "${NODE_AUTH_TOKEN:-}" ]; then
-            echo "::error::NPM_TOKEN secret is missing or empty."
-            echo "Create an npm access token (publish) at https://www.npmjs.com/settings/~/tokens"
-            echo "Then: GitHub → Settings → Secrets and variables → Actions → New repository secret"
-            echo "Name: NPM_TOKEN  Value: <token>"
-            echo "Re-run this workflow after saving the secret."
-            exit 1
-          fi
-
           # Re-check here, not just in the meta step: a local `npm publish` can land
           # while this job builds, and publishing over an existing version is a 403.
           if npm view "xai-sdk-js@${VERSION}" version >/dev/null 2>&1; then

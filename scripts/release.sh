@@ -64,4 +64,4 @@ echo "Created tag $TAG"
 git push origin HEAD
 git push origin "$TAG"
 echo "Pushed $TAG — GitHub Actions will publish npm + GitHub Release."
-echo "Ensure repo secret NPM_TOKEN is set: Settings → Secrets → Actions"
+echo "npm auth uses Trusted Publishing (xai-sdk-js → Settings → Trusted Publisher on npmjs.com)."

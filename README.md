@@ -353,8 +353,8 @@ The npm package is linked to this repo via `package.json` `repository` / `homepa
 
 Publishing is automated by [`.github/workflows/release.yml`](.github/workflows/release.yml):
 
-1. Add repo secret **`NPM_TOKEN`** (npm access token with publish access)  
-   GitHub → **Settings → Secrets and variables → Actions → New repository secret**
+1. One-time: npm **Trusted Publishing** (no token). On npmjs.com: `xai-sdk-js` → **Settings → Trusted Publisher → GitHub Actions**  
+   with this repo's owner, name, and workflow `release.yml`.
 2. Bump and ship a tag:
 
 ```bash
