@@ -41,11 +41,11 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/imfaisii/xai-sdk-typescript.git"
+    "url": "git+https://github.com/imfaisii009/xai-sdk-typescript.git"
   },
-  "homepage": "https://github.com/imfaisii/xai-sdk-typescript#readme",
+  "homepage": "https://github.com/imfaisii009/xai-sdk-typescript#readme",
   "bugs": {
-    "url": "https://github.com/imfaisii/xai-sdk-typescript/issues"
+    "url": "https://github.com/imfaisii009/xai-sdk-typescript/issues"
   },
   "keywords": [
     "xai",
